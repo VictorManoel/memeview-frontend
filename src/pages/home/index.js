@@ -8,7 +8,10 @@ class Home extends Component {
     return (
       <div id="app">
         <Header />
-        <h1>Home</h1>
+        <main id="home">
+          <h1>Memeview Home</h1>
+          Teste
+        </main>
       </div>
     );
   }

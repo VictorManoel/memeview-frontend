@@ -1,0 +1,12 @@
+#home {
+  width: 100%;
+  max-width: 983px;
+  height: calc(100% - 112px);
+  min-height: 250px;
+  padding: 0 24px;
+  margin: 24px auto;
+}
+
+#home > h1 {
+  display: none;
+}
