@@ -1,9 +1,16 @@
 import React, { Component } from "react";
 import "./styles.css";
 
+import Header from "../../components/header";
+
 class Home extends Component {
   render() {
-    return <h1>Home</h1>;
+    return (
+      <div id="app">
+        <Header />
+        <h1>Home</h1>
+      </div>
+    );
   }
 }
 
