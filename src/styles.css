@@ -10,6 +10,18 @@ body {
   height: 100%;
   -webkit-tap-highlight-color: #0000;
   background-color: #fafafa;
+  font-family: "Rubik", sans-serif;
+  color: #444;
+}
+
+::-moz-selection {
+  background-color: #ff0b5483;
+  color: white;
+}
+
+::selection {
+  background-color: #ff0b5483;
+  color: white;
 }
 
 #root,

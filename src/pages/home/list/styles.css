@@ -1,0 +1,16 @@
+#home .list {
+  width: 100%;
+}
+
+.list > .list-items {
+  display: grid;
+  width: 100%;
+  grid-template-columns: 1fr;
+  grid-column-gap: 12px;
+}
+
+@media (min-width: 935px) {
+  .list > .list-items {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}

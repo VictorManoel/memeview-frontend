@@ -4,8 +4,8 @@ import "./styles.css";
 
 const Header = () => (
   <header id="header">
-    <Link to="/" className="header-link">
-      <span className="logo" title="MemeView" />
+    <Link to="/" className="header-link" title="MemeView">
+      <span className="logo" />
     </Link>
   </header>
 );
