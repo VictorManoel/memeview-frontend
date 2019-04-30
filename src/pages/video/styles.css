@@ -1,7 +1,6 @@
-#video {
+#watch {
   width: 100%;
   max-width: 735px;
-  height: calc(100% - 112px);
-  min-height: 250px;
+  min-height: calc(100% - 56px);
   margin: 0 auto;
 }

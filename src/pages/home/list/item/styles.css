@@ -3,7 +3,7 @@
   border-radius: 10px;
   margin-bottom: 12px;
   overflow: hidden;
-  transition: all 0.25s;
+  transition: box-shadow 0.25s;
 }
 
 .list-items .item:hover {
@@ -19,6 +19,7 @@
   width: 100%;
   padding-top: 56.25%;
   background-color: #e0e0e0;
+  overflow: hidden;
 }
 
 .item .thumbnail > img {
@@ -27,6 +28,11 @@
   left: 0;
   width: 100%;
   height: 100%;
+  transition: transform 0.5s;
+}
+
+.item:hover .thumbnail > img {
+  transform: scale(1.1);
 }
 
 .item .item-details {
