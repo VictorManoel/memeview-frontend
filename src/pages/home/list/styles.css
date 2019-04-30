@@ -9,7 +9,13 @@
   grid-column-gap: 12px;
 }
 
-@media (min-width: 935px) {
+@media (min-width: 576px) {
+  .list > .list-items {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 768px) {
   .list > .list-items {
     grid-template-columns: repeat(3, 1fr);
   }

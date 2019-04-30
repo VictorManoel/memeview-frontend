@@ -12,9 +12,14 @@
 }
 
 .emoji.finish {
-  background-image: url(./finish.svg);
+  background-image: url(./images/finish.svg);
+  transition: all 0.2s;
+}
+
+.emoji.finish:hover {
+  background-image: url(./images/happy.svg);
 }
 
 .emoji.loading {
-  background-image: url(./loading.svg);
+  background-image: url(./images/loading.svg);
 }
