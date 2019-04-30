@@ -27,6 +27,12 @@ body {
   width: 100%;
   height: 100%;
   background-color: #9c27b0;
+  text-align: center;
+  color: white;
+}
+
+#root-load > noscript > h1 {
+  padding: 56px;
 }
 
 ::-moz-selection {
