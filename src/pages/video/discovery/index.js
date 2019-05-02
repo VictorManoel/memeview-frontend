@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { Redirect } from "react-router-dom";
 import Api from "../../../services/api";
 import "./styles.css";
 
@@ -20,20 +19,24 @@ class Discovery extends Component {
       this.setState({ isLoading: false, items: data });
     } catch (error) {
       console.log(error);
-      this.setState({ hasError: true });
+      this.setState({ isLoading: false, hasError: true });
     }
   }
 
   render() {
     const { isLoading, hasError, items } = this.state;
 
-    if (hasError) return <Redirect to="/error" />;
-
     return (
       <section id="discovery">
         {isLoading && (
           <div className="load-cards">
             <span />
+          </div>
+        )}
+
+        {hasError && (
+          <div className="error-cards">
+            <span>Houve um erro no servidor! :'(</span>
           </div>
         )}
 

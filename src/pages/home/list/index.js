@@ -11,7 +11,7 @@ export default class List extends Component {
     items: [],
     nextPageToken: 1,
     hasMore: true,
-    error: false
+    hasError: false
   };
 
   loadItems = async () => {
@@ -26,15 +26,15 @@ export default class List extends Component {
 
         this.setState({ items, nextPageToken, hasMore });
       } else if (res.status === 400) {
-        this.setState({ error: true, hasMore: false });
+        this.setState({ hasError: true, hasMore: false });
       }
     } catch (error) {
-      this.setState({ error: true, hasMore: false });
+      this.setState({ hasError: true, hasMore: false });
     }
   };
 
   render() {
-    const { items, hasMore } = this.state;
+    const { items, hasError, hasMore } = this.state;
 
     return (
       <section className="list">
@@ -50,7 +50,14 @@ export default class List extends Component {
               <Item key={item.id} snippet={item.snippet} />
             ))}
         </Scroller>
-        <Loader isLoading={hasMore} />
+
+        {!hasError ? (
+          <Loader isLoading={hasMore} />
+        ) : (
+          <div className="error-list">
+            <span>Houve um error no servidor! :'(</span>
+          </div>
+        )}
       </section>
     );
   }

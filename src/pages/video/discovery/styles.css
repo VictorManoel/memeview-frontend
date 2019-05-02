@@ -6,7 +6,8 @@
   grid-gap: 24px;
 }
 
-#discovery > .load-cards {
+#discovery > .load-cards,
+#discovery > .error-cards {
   grid-column: 1 / 3;
   height: 56px;
   text-align: center;
@@ -20,12 +21,20 @@
   background-image: url(./spinner.svg);
 }
 
+#discovery > .error-cards > span {
+  font-size: 18px;
+  font-weight: bold;
+  line-height: 56px;
+  color: #888;
+}
+
 @media (min-width: 612px) {
   #discovery {
     grid-template-columns: repeat(3, 1fr);
   }
 
-  #discovery > .load-cards {
+  #discovery > .load-cards,
+  #discovery > .error-cards {
     grid-column: 1 / 4;
   }
 }

@@ -9,14 +9,34 @@
   grid-column-gap: 12px;
 }
 
+.list > .error-list {
+  height: 56px;
+  text-align: center;
+}
+
+.list > .error-list > span {
+  font-size: 18px;
+  font-weight: bold;
+  line-height: 56px;
+  color: #888;
+}
+
 @media (min-width: 576px) {
   .list > .list-items {
     grid-template-columns: repeat(2, 1fr);
+  }
+
+  .list > .error-list {
+    grid-column: 1 / 3;
   }
 }
 
 @media (min-width: 768px) {
   .list > .list-items {
     grid-template-columns: repeat(3, 1fr);
+  }
+
+  .list > .error-list {
+    grid-column: 1 / 4;
   }
 }
