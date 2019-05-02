@@ -6,27 +6,32 @@ import Card from "./card";
 
 class Discovery extends Component {
   state = {
+    isLoading: true,
     items: []
   };
 
   async componentDidMount() {
     try {
       const res = await Api.get("more");
-
       const { data } = res;
 
-      console.log(data);
-      this.setState({ items: data });
+      this.setState({ isLoading: false, items: data });
     } catch (error) {
       console.log(error);
     }
   }
 
   render() {
-    const { items } = this.state;
+    const { isLoading, items } = this.state;
 
     return (
       <section id="discovery">
+        {isLoading && (
+          <div className="load-cards">
+            <span />
+          </div>
+        )}
+
         {items.map(item => {
           const { videoId } = item.resourceId;
           return <Card key={videoId} data={item} />;
