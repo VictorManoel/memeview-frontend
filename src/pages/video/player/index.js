@@ -1,21 +1,65 @@
-import React from "react";
+import React, { Component } from "react";
+import { Redirect } from "react-router-dom";
+import Api from "../../../services/api";
 import "./styles.css";
 
-const Player = () => (
-  <section id="player">
-    <div className="video">
-      <iframe
-        src="https://www.youtube-nocookie.com/embed/ukKQw578Lm8"
-        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-        allowFullScreen
-        title="Video"
-      />
-    </div>
-    <div className="video-details">
-      <h1>Vídeo Lorem ipsum</h1>
-      <span>Há 22 minutos &#xb7; 1000000000 Views</span>
-    </div>
-  </section>
-);
+export default class Player extends Component {
+  state = {
+    videoId: null,
+    redirect: false,
+    data: []
+  };
 
-export default Player;
+  loadVideo = async () => {
+    try {
+      const id = this.props.videoId;
+      const res = await Api.get(`/watch/${id}`);
+
+      const { data } = res;
+      const { videoId } = data.resourceId;
+
+      if (res.status === 200) {
+        this.setState({ videoId, data });
+      }
+    } catch (error) {
+      if (error.response.status === 404) {
+        this.setState({ redirect: true });
+      } else {
+        console.log(error);
+      }
+    }
+  };
+
+  componentDidMount() {
+    this.loadVideo();
+  }
+
+  componentDidUpdate(prevProps) {
+    if (prevProps.videoId !== this.props.videoId) {
+      this.loadVideo();
+    }
+  }
+
+  render() {
+    const { redirect, videoId, data } = this.state;
+
+    if (redirect) return <Redirect to="/404" />;
+
+    return (
+      <section id="player">
+        <div className="video">
+          <iframe
+            src={`https://www.youtube-nocookie.com/embed/${videoId}`}
+            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+            title="Video"
+          />
+        </div>
+        <div className="video-details">
+          <h1>{data.title}</h1>
+          <span>{data.publishedAt}</span>
+        </div>
+      </section>
+    );
+  }
+}
