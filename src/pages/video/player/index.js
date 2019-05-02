@@ -8,6 +8,7 @@ export default class Player extends Component {
   state = {
     videoId: null,
     redirect: false,
+    hasError: false,
     data: []
   };
 
@@ -28,6 +29,7 @@ export default class Player extends Component {
         this.setState({ redirect: true });
       } else {
         console.log(error);
+        this.setState({ hasError: true });
       }
     }
   };
@@ -44,9 +46,13 @@ export default class Player extends Component {
   }
 
   render() {
-    const { redirect, videoId, data } = this.state;
+    const { redirect, hasError, videoId, data } = this.state;
 
-    if (redirect) return <Redirect to="/404" />;
+    if (redirect) {
+      return <Redirect to="/404" />;
+    } else if (hasError) {
+      return <Redirect to="/error" />;
+    }
 
     return (
       <section id="player">
@@ -55,7 +61,7 @@ export default class Player extends Component {
             src={`https://www.youtube-nocookie.com/embed/${videoId}`}
             allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen
-            title="Video"
+            title={data.title}
           />
         </div>
         <div className="video-details">

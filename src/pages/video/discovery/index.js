@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Redirect } from "react-router-dom";
 import Api from "../../../services/api";
 import "./styles.css";
 
@@ -7,6 +8,7 @@ import Card from "./card";
 class Discovery extends Component {
   state = {
     isLoading: true,
+    hasError: false,
     items: []
   };
 
@@ -18,11 +20,14 @@ class Discovery extends Component {
       this.setState({ isLoading: false, items: data });
     } catch (error) {
       console.log(error);
+      this.setState({ hasError: true });
     }
   }
 
   render() {
-    const { isLoading, items } = this.state;
+    const { isLoading, hasError, items } = this.state;
+
+    if (hasError) return <Redirect to="/error" />;
 
     return (
       <section id="discovery">
@@ -32,10 +37,12 @@ class Discovery extends Component {
           </div>
         )}
 
-        {items.map(item => {
-          const { videoId } = item.resourceId;
-          return <Card key={videoId} data={item} />;
-        })}
+        {items
+          .filter(item => (item.thumbnails ? true : false))
+          .map(item => {
+            const { videoId } = item.resourceId;
+            return <Card key={videoId} data={item} />;
+          })}
       </section>
     );
   }

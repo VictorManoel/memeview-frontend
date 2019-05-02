@@ -1,0 +1,37 @@
+#errorpage {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: #9c27b0;
+}
+
+#errorpage > .error-emoji {
+  display: block;
+  width: 85px;
+  height: 85px;
+  background-image: url(./sad.svg);
+  margin-bottom: 12px;
+}
+
+#errorpage > h2 {
+  color: white;
+}
+
+#errorpage > .back {
+  display: inline-block;
+  padding: 12px 24px;
+  border: 1px solid white;
+  border-radius: 5px;
+  margin-top: 12px;
+  text-decoration: none;
+  color: white;
+  transition: all 0.25s;
+}
+
+#errorpage > .back:hover {
+  background-color: white;
+  color: #9c27b0;
+}

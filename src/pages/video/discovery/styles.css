@@ -17,7 +17,7 @@
   width: 56px;
   height: 56px;
   margin: 0 auto;
-  background-image: url(./loading.svg);
+  background-image: url(./spinner.svg);
 }
 
 @media (min-width: 612px) {
