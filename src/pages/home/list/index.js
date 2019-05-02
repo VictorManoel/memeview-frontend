@@ -51,12 +51,12 @@ export default class List extends Component {
             ))}
         </Scroller>
 
-        {!hasError ? (
-          <Loader isLoading={hasMore} />
-        ) : (
+        {hasError ? (
           <div className="error-list">
             <span>Houve um error no servidor! :'(</span>
           </div>
+        ) : (
+          <Loader isLoading={hasMore} />
         )}
       </section>
     );
