@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Redirect } from "react-router-dom";
+import Moment from "moment";
 import Api from "../../../services/api";
 import "./styles.css";
 
@@ -20,6 +21,7 @@ export default class Player extends Component {
 
       if (res.status === 200) {
         this.setState({ videoId, data });
+        document.title = "MemeView | " + data.title;
       }
     } catch (error) {
       if (error.response.status === 404) {
@@ -36,6 +38,7 @@ export default class Player extends Component {
 
   componentDidUpdate(prevProps) {
     if (prevProps.videoId !== this.props.videoId) {
+      this.setState({ data: { title: "..." } });
       this.loadVideo();
     }
   }
@@ -57,7 +60,7 @@ export default class Player extends Component {
         </div>
         <div className="video-details">
           <h1>{data.title}</h1>
-          <span>{data.publishedAt}</span>
+          <span>Na lista {Moment(data.publishedAt).fromNow()}</span>
         </div>
       </section>
     );

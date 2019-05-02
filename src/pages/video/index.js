@@ -6,15 +6,19 @@ import Footer from "../../components/footer";
 import Discovery from "./discovery";
 import Player from "./player";
 
-const Video = props => (
-  <div id="app">
-    <Header />
-    <main id="watch">
-      <Player videoId={props.match.params.id} />
-      <Discovery />
-    </main>
-    <Footer />
-  </div>
-);
+const Video = props => {
+  const { id } = props.match.params;
+
+  return (
+    <div id="app">
+      <Header />
+      <main id="watch">
+        <Player videoId={id} />
+        <Discovery />
+      </main>
+      <Footer />
+    </div>
+  );
+};
 
 export default Video;
